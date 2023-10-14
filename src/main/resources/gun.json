@@ -1,0 +1,71 @@
+{
+  "action_link": "",
+  "appid": 730,
+  "assetid": "32905524224",
+  "classid": "5508850544",
+  "contextid": 2,
+  "goods_id": 835579,
+  "has_tradable_cooldown": false,
+  "info": {
+    "fraudwarnings": null,
+    "icon_url": "https://g.fp.ps.netease.com/market/file/5fc96af05e602702db55deb31RBVC14a02",
+    "original_icon_url": "https://g.fp.ps.netease.com/market/file/5fc96aee96dee484ccecd5fbZwFK0p2R02",
+    "paintindex": 977,
+    "paintseed": 254,
+    "stickers": [
+      {
+        "category": "sticker",
+        "img_url": "https://g.fp.ps.netease.com/market/file/635a40a503d768758ed499f8oj7jyXZ904",
+        "name": "Spinx | Rio 2022",
+        "slot": 0,
+        "sticker_id": 6398,
+        "wear": 0
+      },
+      {
+        "category": "sticker",
+        "img_url": "https://g.fp.ps.netease.com/market/file/635a40a503d768758ed499f8oj7jyXZ904",
+        "name": "Spinx | Rio 2022",
+        "slot": 1,
+        "sticker_id": 6398,
+        "wear": 0
+      },
+      {
+        "category": "sticker",
+        "img_url": "https://g.fp.ps.netease.com/market/file/635a40a503d768758ed499f8oj7jyXZ904",
+        "name": "Spinx | Rio 2022",
+        "slot": 2,
+        "sticker_id": 6398,
+        "wear": 0
+      },
+      {
+        "category": "sticker",
+        "img_url": "https://g.fp.ps.netease.com/market/file/635a40a503d768758ed499f8oj7jyXZ904",
+        "name": "Spinx | Rio 2022",
+        "slot": 3,
+        "sticker_id": 6398,
+        "wear": 0
+      }
+    ],
+    "tournament_tags": [
+      {
+        "category": "tournamentteam",
+        "internal_name": "team89",
+        "localized_name": "Vitality"
+      },
+      {
+        "category": "tournament",
+        "internal_name": "tournament20",
+        "localized_name": "2022\u5e74 IEM \u91cc\u7ea6\u9526\u6807\u8d5b"
+      },
+      {
+        "category": "proplayer",
+        "internal_name": "spinx",
+        "localized_name": "Spinx\uff08Lotan Giladi\uff09"
+      }
+    ]
+  },
+  "instanceid": "188530139",
+  "paintwear": "0.05994493141770363",
+  "tradable_cooldown_text": "",
+  "tradable_unfrozen_time": null
+}

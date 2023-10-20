@@ -1,0 +1,51 @@
+{
+  "appid": 730,
+  "bookmarked": false,
+  "buy_max_price": "0.02",
+  "buy_num": 211,
+  "can_bargain": true,
+  "can_search_by_tournament": false,
+  "description": null,
+  "game": "csgo",
+  "goods_info": {
+    "icon_url": "https://g.fp.ps.netease.com/market/file/6353290d0bff017eaf183144Lq28ZIAp04",
+    "info": {
+      "tags": {
+        "quality": {
+          "category": "quality",
+          "id": 516,
+          "internal_name": "normal",
+          "localized_name": "\u041e\u0431\u044b\u0447\u043d\u044b\u0439"
+        },
+        "rarity": {
+          "category": "rarity",
+          "id": 595,
+          "internal_name": "rare",
+          "localized_name": "\u0432\u044b\u0441\u0448\u0435\u0433\u043e \u043a\u043b\u0430\u0441\u0441\u0430"
+        },
+        "type": {
+          "category": "type",
+          "id": 585,
+          "internal_name": "csgo_tool_sticker",
+          "localized_name": "\u041d\u0430\u043a\u043b\u0435\u0439\u043a\u0430"
+        }
+      }
+    },
+    "item_id": null,
+    "original_icon_url": "https://g.fp.ps.netease.com/market/file/6353290a9aaaab7dd256fb8a2Qz1XkiG04",
+    "steam_price": "0.03",
+    "steam_price_cny": "0.22"
+  },
+  "has_buff_price_history": true,
+  "id": 911258,
+  "market_hash_name": "Sticker | Spinx | Rio 2022",
+  "market_min_price": "0",
+  "name": "Sticker | Spinx | Rio 2022",
+  "quick_price": "0.03",
+  "sell_min_price": "0.04",
+  "sell_num": 564,
+  "sell_reference_price": "0.04",
+  "short_name": "Sticker | Spinx | Rio 2022",
+  "steam_market_url": "https://steamcommunity.com/market/listings/730/Sticker%20%7C%20Spinx%20%7C%20Rio%202022",
+  "transacted_num": 0
+}

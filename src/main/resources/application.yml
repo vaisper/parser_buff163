@@ -1,3 +1,3 @@
 properties:
-  cookie: "Device-Id=muHjbC93U0IGWOFRcnr9; P_INFO=7-9110278769|1682771749|1|netease_buff|00&99|null&null&null#RU&null#10#0|&0||7-9110278769; Locale-Supported=ru; game=csgo; qr_code_verify_ticket=8c0LAqg39af997a7ffa22098b5fc98aa24f3; remember_me=U1104067645|S1fSuyfkQRS4niDEq78iC6hjKbJhbU9n; session=1-3hMh6i4NgvSFO4Pza9M8g7lZOYHPFoApn6TZGLrzUW372030052197; csrf_token=ImQxOTcxYTg2MWY4MDBlNTQyZmZkNzEzZDMzZmQ3YmEwMGE2MDU5ZTgi.GAwz6A.OWPJABXWG467mJOulWARy6AlwkQ"
+  cookie: "cookie"
   delaySeconds: 5

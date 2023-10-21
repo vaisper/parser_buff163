@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  super_bd:
+    container_name: parser_bd
+    image: postgres:16-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: mnepohui
+      POSTGRES_USER: nihauma
+      POSTGRES_DB: china
+  parser:
+    container_name: parser
+    build:
+      context: .

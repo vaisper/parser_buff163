@@ -104,6 +104,9 @@ public class MarketApiService {
                 throw new IOException("Unexpected code " + response);
 
             String body = response.body().string();
+            if (body.trim().startsWith("<")) {
+                throw new IOException("Received unexpected HTML response. Possible authentication issue.");
+            }
             JsonResponse stickersResponse = mapper.readValue(body, JsonResponse.class);
             int totalPage = stickersResponse.getData().getTotalPage();
             log.info("get total page: " + totalPage);

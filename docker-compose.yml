@@ -1,16 +1,28 @@
-version: "3.9"
+version: '3.9'
 services:
-  super_bd:
-    container_name: parser_bd
-    image: postgres:16-alpine
-    restart: always
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_PASSWORD: mnepohui
-      POSTGRES_USER: nihauma
-      POSTGRES_DB: china
   parser:
-    container_name: parser
+    image: client:0.0.1
     build:
       context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8181:8181"
+    depends_on:
+      - service-db
+    environment:
+      - SERVER_PORT= 8181
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://service-db/parser_db
+
+  service-db:
+    image: postgres:14.7-alpine
+    environment:
+      POSTGRES_USER: nihauma
+      POSTGRES_PASSWORD: mnepohui
+    ports:
+      - "15432:5432"
+    volumes:
+      - ./infrastructure/db/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
+      - db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+volumes:
+  db-data:

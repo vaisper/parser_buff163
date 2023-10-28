@@ -10,18 +10,23 @@ services:
     depends_on:
       - service-db
     environment:
-      - SERVER_PORT=8181
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://service-db/parser_db
+      - PARSER_DELAY=5
+      - PARSER_PORT=8181
+      - PARSER_COOKIE=${PARSER_COOKIE}
+      - PARSER_DATASOURCE=${PARSER_DATASOURCE-jdbc:postgresql://service-db/parser_db}
+      - PARSER_DB_USER=${PARSER_DB_USER-nihauma}
+      - PARSER_DB_PASSWORD=${PARSER_DB_PASSWORD-mnepoxyi}
 
   service-db:
     image: postgres:14.7-alpine
     environment:
-      POSTGRES_USER: nihauma
-      POSTGRES_PASSWORD: mnepohui
+      POSTGRES_USER: ${PARSER_DB_USER-nihauma}
+      POSTGRES_PASSWORD: ${PARSER_DB_PASSWORD-mnepoxyi}
+      POSRGRES_DB: parser_db
     ports:
       - "5432:5432"
     volumes:
-      - ./infrastructure/db/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
+      - ./infrastructure/db/prepare_db.sql:/docker-entrypoint-initdb.d/prepare_db.sql
       - db-data:/var/lib/postgresql/data
     restart: unless-stopped
 volumes:

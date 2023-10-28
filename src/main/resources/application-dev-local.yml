@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    active: local
+
+# Общие настройки для всех профилей
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/parser_db}
+    username: ${SPRING_DATASOURCE_USERNAME:nihauma}
+    password: ${SPRING_DATASOURCE_PASSWORD:mnepoxyi}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog-master.xml
+  application:
+    name: parser-service
+logging:
+  level:
+    org.hibernate.sql: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: DEBUG
+    com.severmed.svc.banner: DEBUG
+
+# Настройки для профиля "local"
+  profiles: local
+  datasource:
+    url: jdbc:postgresql://localhost:15432/parser_db
+    username: username
+    password: password
+
+
+
+
+

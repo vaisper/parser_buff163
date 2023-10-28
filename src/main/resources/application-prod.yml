@@ -1,0 +1,11 @@
+# Общие настройки, унаследованные из application.yml
+spring:
+  datasource:
+    url: jdbc:postgresql://production-db-host:5432/production_db
+    username: production_user
+    password: production_password
+
+# Переопределение только show-sql для профиля "prod"
+  profiles: prod
+  jpa:
+    show-sql: false

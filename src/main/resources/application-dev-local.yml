@@ -15,7 +15,7 @@ spring:
     show-sql: true
   liquibase:
     enabled: true
-    change-log: classpath:db/changelog/changelog-master.xml
+    change-log: classpath:db/changelog/ddl/changelog-master.xml
   application:
     name: parser-service
 logging:
@@ -30,8 +30,3 @@ logging:
     url: jdbc:postgresql://localhost:15432/parser_db
     username: username
     password: password
-
-
-
-
-

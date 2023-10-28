@@ -9,20 +9,12 @@ services:
       - "8181:8181"
     depends_on:
       - service-db
-    environment:
-      - PARSER_DELAY=5
-      - PARSER_PORT=8181
-      - PARSER_COOKIE=${PARSER_COOKIE}
-      - PARSER_DATASOURCE=${PARSER_DATASOURCE-jdbc:postgresql://service-db/parser_db}
-      - PARSER_DB_USER=${PARSER_DB_USER-nihauma}
-      - PARSER_DB_PASSWORD=${PARSER_DB_PASSWORD-mnepoxyi}
+    env_file: .env
 
   service-db:
     image: postgres:14.7-alpine
-    environment:
-      POSTGRES_USER: ${PARSER_DB_USER-nihauma}
-      POSTGRES_PASSWORD: ${PARSER_DB_PASSWORD-mnepoxyi}
-      POSRGRES_DB: parser_db
+    env_file: .env
+
     ports:
       - "5432:5432"
     volumes:

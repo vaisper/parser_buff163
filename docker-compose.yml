@@ -9,15 +9,14 @@ services:
       - "8181:8181"
     depends_on:
       - service-db
-    environment:
-      - SERVER_PORT=8181
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://service-db/parser_db
+    env_file: .env
 
   service-db:
     image: postgres:14.7-alpine
+    env_file: .env
     environment:
-      POSTGRES_USER: nihauma
-      POSTGRES_PASSWORD: mnepohui
+      POSTGRES_USER: ${PARSER_DB_USER}
+      POSTGRES_PASSWORD: ${PARSER_DB_PASSWORD}
     ports:
       - "5432:5432"
     volumes:

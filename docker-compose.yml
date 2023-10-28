@@ -14,11 +14,13 @@ services:
   service-db:
     image: postgres:14.7-alpine
     env_file: .env
-
+    environment:
+      POSTGRES_USER: ${PARSER_DB_USER}
+      POSTGRES_PASSWORD: ${PARSER_DB_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
-      - ./infrastructure/db/prepare_db.sql:/docker-entrypoint-initdb.d/prepare_db.sql
+      - ./infrastructure/db/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
       - db-data:/var/lib/postgresql/data
     restart: unless-stopped
 volumes:

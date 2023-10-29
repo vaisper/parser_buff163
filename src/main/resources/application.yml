@@ -5,6 +5,12 @@ properties:
 server:
   port: ${PARSER_PORT:8181}
 
+logging:
+  level:
+    org.hibernate.sql: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: DEBUG
+    com.parser.parser.svc.banner: DEBUG
+
 spring:
   datasource:
     url: ${PARSER_DATASOURCE}
@@ -24,5 +30,4 @@ spring:
       ddl-auto: none
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true

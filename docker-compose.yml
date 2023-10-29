@@ -10,6 +10,8 @@ services:
     depends_on:
       - service-db
     env_file: .env
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE-default}
 
   service-db:
     image: postgres:14.7-alpine

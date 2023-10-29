@@ -1,7 +1,3 @@
-properties:
-  cookie: ${PARSER_COOKIE}
-  delaySeconds: ${PARSER_DELAY}
-
 server:
   port: ${PARSER_PORT:8181}
 
@@ -13,9 +9,9 @@ logging:
 
 spring:
   datasource:
-    url: ${PARSER_DATASOURCE}
-    username: ${PARSER_DB_USER}
-    password: ${PARSER_DB_PASSWORD}
+    url: ${PARSER_DATASOURCE:'jdbc:postgresql://service-db/parser_db'}
+    username: ${PARSER_DB_USER:nihauma}
+    password: ${PARSER_DB_PASSWORD:mnepoxyi}
   liquibase:
     enabled: true
     drop-first: false
@@ -31,3 +27,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
+properties:
+  cookie: ${PARSER_COOKIE}
+  delaySeconds: ${PARSER_DELAY}

@@ -21,9 +21,9 @@ public class ParserApplication {
 	@PostConstruct
 	private void logInitialization() {
 		System.out.println("                                                           ");
-		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+		System.out.println("***********************************************************");
 		System.out.println("ACTIVE PROFILE: " + Arrays.toString(env.getActiveProfiles()));
-		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+		System.out.println("***********************************************************");
 		System.out.println("                                                           ");
 	}
 

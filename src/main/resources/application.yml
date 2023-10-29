@@ -8,10 +8,12 @@ logging:
     com.parser.parser.svc.banner: DEBUG
 
 spring:
+  profiles:
+    active: dev-local # Указываем, что профиль по умолчанию - dev-local
   datasource:
-    url: ${PARSER_DATASOURCE:'jdbc:postgresql://service-db/parser_db'}
-    username: ${PARSER_DB_USER:nihauma}
-    password: ${PARSER_DB_PASSWORD:mnepoxyi}
+    url: ${PARSER_DATASOURCE}
+    username: ${PARSER_DB_USER}
+    password: ${PARSER_DB_PASSWORD}
   liquibase:
     enabled: true
     drop-first: false
@@ -29,4 +31,4 @@ spring:
         format_sql: true
 properties:
   cookie: ${PARSER_COOKIE}
-  delaySeconds: ${PARSER_DELAY}
+  delaySeconds: ${PARSER_DELAY:5}

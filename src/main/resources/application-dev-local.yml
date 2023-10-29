@@ -6,5 +6,5 @@ spring:
     username: nihauma
     password: mnepoxyi
 properties:
-  cookie: 5
-  delaySeconds: ${PARSER_DELAY}
+  cookie: cookie
+  delaySeconds: 5

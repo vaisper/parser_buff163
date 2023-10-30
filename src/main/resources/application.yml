@@ -1,11 +1,15 @@
-properties:
-  cookie: ${PARSER_COOKIE}
-  delaySeconds: ${PARSER_DELAY}
-
 server:
   port: ${PARSER_PORT:8181}
 
+logging:
+  level:
+    org.hibernate.sql: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: DEBUG
+    com.parser.parser.svc.banner: DEBUG
+
 spring:
+  profiles:
+    active: dev-local # Указываем, что профиль по умолчанию - dev-local
   datasource:
     url: ${PARSER_DATASOURCE}
     username: ${PARSER_DB_USER}
@@ -24,5 +28,7 @@ spring:
       ddl-auto: none
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+properties:
+  cookie: ${PARSER_COOKIE}
+  delaySeconds: ${PARSER_DELAY:5}

@@ -1,2 +1,10 @@
 # тут можно переопределить настройки, чтобы запускать spring application из IDE без докера
 # ну например настройки базы прописать, чтобы не задвать переменные окружения
+spring:
+  datasource:
+    url: 'jdbc:postgresql://service-db/parser_db'
+    username: nihauma
+    password: mnepoxyi
+properties:
+  cookie: cookie
+  delaySeconds: 5

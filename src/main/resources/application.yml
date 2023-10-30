@@ -1,7 +1,3 @@
-properties:
-  cookie: ${PARSER_COOKIE}
-  delaySeconds: ${PARSER_DELAY}
-
 server:
   port: ${PARSER_PORT:8181}
 
@@ -12,6 +8,8 @@ logging:
     com.parser.parser.svc.banner: DEBUG
 
 spring:
+  profiles:
+    active: dev-local # Указываем, что профиль по умолчанию - dev-local
   datasource:
     url: ${PARSER_DATASOURCE}
     username: ${PARSER_DB_USER}
@@ -31,3 +29,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
+properties:
+  cookie: ${PARSER_COOKIE}
+  delaySeconds: ${PARSER_DELAY:5}

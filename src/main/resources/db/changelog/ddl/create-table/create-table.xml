@@ -1,24 +1,35 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <databaseChangeLog
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="1698353607" author="vaisper">
+    <changeSet id="1698782209" author="vaisper">
         <createTable tableName="stickers">
             <column name="id" type="serial">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="title" type="varchar(100)">
+            <column name="short_name" type="nvarchar(250)">
                 <constraints nullable="false"/>
             </column>
-            <column name="author" type="varchar(100)">
+            <column name="global_item_id" type="bigint"/>
+            <column name="sell_min_price" type="double precision">
                 <constraints nullable="false"/>
             </column>
-            <column name="year" type="int">
+            <column name="steam_market_url" type="nvarchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="icon_url" type="nvarchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-
 </databaseChangeLog>

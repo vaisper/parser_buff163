@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8181:8181"
+      - "8080:8080"
     depends_on:
       - service-db
     env_file: .env

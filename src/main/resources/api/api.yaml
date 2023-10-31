@@ -1,0 +1,100 @@
+openapi: 3.0.0
+info:
+  title: parser-service API
+  version: 1.0.0
+
+servers:
+  - url: http://localhost
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Parser
+    description: парсер items Buff163
+
+paths:
+  /parser/start:
+    post:
+      summary: Запустить парсер
+      operationId: startParser
+      responses:
+        '200':
+          description: Парсер успешно запущен
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: Ошибка при запуске парсера
+          content:
+            application/json:
+              schema:
+                type: string
+#  /parser/startее:
+#    post:
+#      summary: запускаем парсер
+#      operationId: startParser
+#      tags:
+#        - Parser
+#      responses:
+#        '200':
+#          description: OK - парсер запущен
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '#/components/schemas/BlacklistRecordInfoResponse'
+#        '500':
+#          description: Что-то пошло не так... - `10100` - COMMON_ERROR_UNKNOWN
+components:
+  schemas:
+    BlacklistRecordInfoResponse:
+          required:
+            - responseData
+          properties:
+            responseData:
+              $ref: '#/components/schemas/ResponseData'
+    ResponseData:
+      type: object
+      description: список валют
+      properties:
+        date:
+          type: string
+          format: date
+        previousDate:
+          type: string
+          format: date
+        valuteInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValuteInfo'
+    ValuteInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        valute:
+          $ref: '#/components/schemas/Valute'
+    Valute:
+      type: object
+      description: Информация о валюте.
+      properties:
+        id:
+          description: Идентификатор валюты
+          type: string
+        numCode:
+          type: integer
+        charCode:
+          type: string
+          description: сокращение имени валюты
+        nominal:
+          type: integer
+          description: Дата и время начала блокировки
+        name:
+          type: string
+        value:
+          type: number
+          format: double
+        previous:
+          type: number
+          format: double

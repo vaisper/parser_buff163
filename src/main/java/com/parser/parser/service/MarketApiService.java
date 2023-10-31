@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.parser.parser.config.PropertyConfig;
 import com.parser.parser.dto.response.JsonResponse;
 import com.parser.parser.dto.response.ResponseData;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -28,22 +27,17 @@ public class MarketApiService {
     private final ObjectMapper mapper;
     private final OkHttpClient okHttpClient;
 
-    @PostConstruct
-    public void init() {
-        runScraper();
-    }
-
     public void runScraper() {
         Instant start = Instant.now();
 
         log.info("Start scrap");
+        // todo: сообщение в телегу
         Optional<Integer> totalPages = fetchTotalPages();
         int pages = 0;
         if (totalPages.isPresent()) {
             pages = totalPages.get();
         } else {
             log.error("Failed to get total pages.");
-            System.exit(1);
         }
 
         fetchPages(pages);
@@ -105,6 +99,7 @@ public class MarketApiService {
 
             String body = response.body().string();
             if (body.trim().startsWith("<")) {
+//                todo: когда прикрутим телегу, добавить здесь сообщение в телегу
                 throw new IOException("Received unexpected HTML response. Possible authentication issue.");
             }
             JsonResponse stickersResponse = mapper.readValue(body, JsonResponse.class);

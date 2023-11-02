@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StickersRepository extends JpaRepository<Stickers, Integer>, CrudRepository<Stickers, Integer> {
-    Stickers findByGlobalItemId(Long globalItemId);
+    Stickers findByShortName(String shortName);
 }

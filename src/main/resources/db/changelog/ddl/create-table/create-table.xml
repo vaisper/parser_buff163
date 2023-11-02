@@ -8,8 +8,8 @@
 
     <changeSet id="1698782209" author="vaisper">
         <createTable tableName="stickers">
-            <column name="id" type="serial">
-                <constraints nullable="false" primaryKey="true"/>
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
             </column>
             <column name="short_name" type="nvarchar(250)">
                 <constraints nullable="false"/>

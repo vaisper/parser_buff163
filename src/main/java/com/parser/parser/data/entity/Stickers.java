@@ -1,17 +1,19 @@
 package com.parser.parser.data.entity;
 
 import com.parser.parser.dto.response.Item;
+import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
 import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "stickers")
@@ -24,7 +26,8 @@ public class Stickers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Basic(optional = false)
+    @Column(name = "id", unique = true, nullable = false)
     private Integer id;
     @Column(name = "short_name")
     private String shortName;

@@ -79,10 +79,10 @@ public class MarketApiService {
         ResponseData data = getJsonResponse(page, request);
         List<Item> itemList = Objects.requireNonNull(data).getItems();
 
-        log.info("Сохраняем в базу");
-        itemList.forEach(item -> saveOrUpdateStickers(convert(item)));
+        for (Item item : itemList) {
+            saveOrUpdateStickers(convert(item));
+        }
         log.info("-------------------------------------------------------------------------------------");
-        TimeUnit.SECONDS.sleep(2);
     }
 
     private ResponseData getJsonResponse(int page, Request request) {
@@ -122,19 +122,17 @@ public class MarketApiService {
         return Optional.empty();
     }
 
-    public void saveOrUpdateStickers(Stickers stickers) {
-        Stickers existingStickers = stickersRepository.findByGlobalItemId(stickers.getGlobalItemId());
+    private void saveOrUpdateStickers(Stickers stickers) {
+        Stickers existingStickers = stickersRepository.findByShortName(stickers.getShortName());
+
         if (existingStickers == null) {
-            // Записи с таким globalItemId не существует, вы можете сохранить входящую запись
+            log.info("save new sticker: " + stickers.getShortName());
             stickersRepository.save(stickers);
-        } else {
-            // Запись с таким globalItemId уже существует, выполните здесь обновление
-            if (!existingStickers.getId().equals(stickers.getId())) {
-                // Обновите, только если id не совпадают
-                existingStickers.setShortName(stickers.getShortName());
-                // Добавьте другие поля, которые вам нужно обновить
-                stickersRepository.save(existingStickers); // Сохранить обновленную запись
-            }
+        } else if (!existingStickers.getGlobalItemId().equals(stickers.getGlobalItemId())) {
+            log.info("sticker:" + stickers.getShortName() + "has new global id");
+            existingStickers.setShortName(stickers.getShortName());
+            existingStickers.setGlobalItemId(stickers.getGlobalItemId());
+            stickersRepository.save(existingStickers);
         }
     }
 

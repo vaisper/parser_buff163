@@ -5,6 +5,8 @@ spring:
     url: 'jdbc:postgresql://service-db/parser_db'
     username: nihauma
     password: mnepoxyi
+  jpa:
+    show-sql: false
 properties:
   cookie: ${PARSER_COOKIE:cookie}
   delaySeconds: 5

@@ -1,5 +1,5 @@
 server:
-  port: ${PARSER_PORT:8181}
+  port: ${PARSER_PORT:8080}
 
 logging:
   level:

@@ -2,6 +2,9 @@ package com.parser.parser.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.parser.parser.config.PropertyConfig;
+import com.parser.parser.data.entity.Stickers;
+import com.parser.parser.data.repo.StickersRepository;
+import com.parser.parser.dto.response.Item;
 import com.parser.parser.dto.response.JsonResponse;
 import com.parser.parser.dto.response.ResponseData;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +19,12 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalTime;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
+
+import static com.parser.parser.data.entity.Stickers.convert;
 
 @Slf4j
 @Service
@@ -26,6 +33,7 @@ public class MarketApiService {
     private final PropertyConfig propertyConfig;
     private final ObjectMapper mapper;
     private final OkHttpClient okHttpClient;
+    private final StickersRepository stickersRepository;
 
     public void runScraper() {
         Instant start = Instant.now();
@@ -69,10 +77,12 @@ public class MarketApiService {
 
         Request request = MarketApiBuilder.obtainRequest(propertyConfig.getCookie(), page);
         ResponseData data = getJsonResponse(page, request);
+        List<Item> itemList = Objects.requireNonNull(data).getItems();
 
-        log.info("Сохраняем в базу");
+        for (Item item : itemList) {
+            saveOrUpdateStickers(convert(item));
+        }
         log.info("-------------------------------------------------------------------------------------");
-        TimeUnit.SECONDS.sleep(2);
     }
 
     private ResponseData getJsonResponse(int page, Request request) {
@@ -112,6 +122,20 @@ public class MarketApiService {
         return Optional.empty();
     }
 
+    private void saveOrUpdateStickers(Stickers stickers) {
+        Stickers existingStickers = stickersRepository.findByShortName(stickers.getShortName());
+
+        if (existingStickers == null) {
+            log.info("save new sticker: " + stickers.getShortName());
+            stickersRepository.save(stickers);
+        } else if (!existingStickers.getGlobalItemId().equals(stickers.getGlobalItemId())) {
+            log.info("sticker:" + stickers.getShortName() + "has new global id");
+            existingStickers.setShortName(stickers.getShortName());
+            existingStickers.setGlobalItemId(stickers.getGlobalItemId());
+            stickersRepository.save(existingStickers);
+        }
+    }
+
     private static LocalTime getFinalTime(long timeElapsed) {
         long totalSeconds = timeElapsed / 1000;
         int hours = (int) (totalSeconds / 3600);
@@ -122,3 +146,4 @@ public class MarketApiService {
     }
 
 }
+
